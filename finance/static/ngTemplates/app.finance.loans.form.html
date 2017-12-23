@@ -1,0 +1,28 @@
+<div class="container-fluid" ng-controller="businessManagement.finance.loans.form">
+  <div class="col-md-6">
+    <h3 class="text-muted" ng-if="mode == 'new'">Create a new loan account</h3>
+    <h3 class="text-muted" ng-if="mode == 'edit'">Edit loan : {{loan.pk}}</h3>
+    <div class="form-group">
+      <label>Lender</label>
+      <input type="text" class="form-control" ng-model="form.lender" />
+    </div>
+    <div class="form-group">
+      <label>Interest</label>
+      <input type="text" class="form-control" ng-model="form.interestRate " />
+    </div>
+    <div class="form-group">
+      <label>Amount</label>
+      <input type="text" class="form-control" ng-model="form.amount" />
+    </div>
+    <div class="form-group">
+      <label>End Date</label>
+      <div class="input-group">
+        <input type="text" class="form-control " uib-datepicker-popup="dd-MMMM-yyyy" ng-model="form.endDate" is-open="status.start" />
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="status.start = true;"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </div>
+    </div>
+    <button class="btn btn-info" ng-click="save()">Save</button>
+  </div>
+</div>

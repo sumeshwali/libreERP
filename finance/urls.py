@@ -11,7 +11,10 @@ router.register(r'transaction' , TransactionViewSet , base_name ='transaction')
 router.register(r'expenseSheet' , ExpenseSheetViewSet , base_name ='expenseSheet')
 router.register(r'invoice' , InvoiceViewSet , base_name ='invoice')
 router.register(r'inflow' , InflowViewSet , base_name ='inflow')
-
+router.register(r'loan' , LoanViewSet , base_name ='loan')
+router.register(r'outflow' , OutflowViewSet , base_name ='Outflow')
+router.register(r'asset' , AssetViewSet , base_name ='Asset')
+router.register(r'rawmaterial' , RawmaterialViewSet , base_name =' Rawmaterial')
 urlpatterns = [
     url(r'^', include(router.urls)),
 ]

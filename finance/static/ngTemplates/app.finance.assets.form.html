@@ -1,0 +1,36 @@
+<div class="container-fluid" ng-controller="businessManagement.finance.assets.form">
+  <div class="col-md-6">
+    <h3 class="text-muted" ng-if="mode == 'new'">Create Asset Value</h3>
+    <h3 class="text-muted" ng-if="mode == 'edit'">Edit Asset : {{asset.pk}}</h3>
+    <div class="form-group">
+      <label for="">Name</label>
+      <input type="text" class="form-control" ng-model="form.name" />
+    </div>
+    <div class="form-group">
+      <label for="">Original Cost</label>
+      <input type="text" class="form-control" ng-model="form.orginalCost" />
+    </div>
+    <div class="form-group">
+      <label for="">Depreciation Rate</label>
+      <input type="text" class="form-control" ng-model="form.depreciationRate" />
+    </div>
+    <div class="form-group">
+      <label for="">Depreciation Value</label>
+      <input type="text" class="form-control" ng-model="form.depreciationValue" />
+    </div>
+    <div class="form-group">
+      <label for="">Present Value</label>
+      <input type="text" class="form-control" ng-model="form.presentVal" />
+    </div>
+    <div class="form-group">
+      <label>Purchase Date</label>
+      <div class="input-group">
+        <input type="text" class="form-control " uib-datepicker-popup="dd-MMMM-yyyy" ng-model="form.purchaseDate" is-open="status.start" />
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="status.start = true;"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </div>
+    </div>
+    <button class="btn btn-info" ng-click="save()">Save</button>
+  </div>
+</div>

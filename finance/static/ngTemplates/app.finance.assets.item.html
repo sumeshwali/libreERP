@@ -1,0 +1,18 @@
+<div class="col-md-4" style="padding-bottom:10px;padding-left:10px;padding-right:10px;">
+  <div class="container-fluid card" style="padding:10px;height:330px;">
+    <div class="container-fluid" style="position:relative;">
+      <i class="fa fa-cogs fa-5x" style="color:#eeeeee;position:absolute;right:20px;bottom:60px;"></i>
+      <div class="row" style="border-bottom: 1px solid #dedede;height:60px;padding-top:15px;">
+        <span style="font-size:20px;" class="text-muted"><strong style="font-size:25px;">Item Name : {{data.name}}</strong></span>
+      </div>
+      <div class="row">
+        <strong>Original Cost :</strong> {{data.orginalCost}}<br><br>
+        <strong>Depreciation Rate :</strong> {{data.depreciationRate}}<br><br>
+        <strong>Depreciation Value :</strong> {{data.depreciationValue}}<br><br>
+        <strong>Present Value :</strong> {{data.presentVal}}<br><br>
+        <strong>Purchase Date :</strong> {{data.purchaseDate | date:"dd/MM/yyyy"}}<br><br>
+      <i style="cursor:pointer;" class="fa fa-pencil fa-2x" ng-click="rowActionClicked('edit')"></i>
+      </div>
+    </div>
+  </div>
+</div>

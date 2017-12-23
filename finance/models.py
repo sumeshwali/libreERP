@@ -107,3 +107,41 @@ class Invoice(models.Model):
     approved = models.BooleanField(default = False) # it is possible to have a sheet with some of the invoices rejected and if the sheet is approved the amount to be paid will be the sum of claims in the approved invoices only
     def __unicode__(self):
         return '<service : %s > , <amount : %s > , <sheet : %s > , < user : %s >' %(self.service , self.amount , self.sheet , self.user.username)
+
+class Loan(models.Model):
+    user = models.ForeignKey(User , related_name='loansAccountsCreated' , null = False)
+    created = models.DateTimeField(auto_now_add=True)
+    amount = models.PositiveIntegerField(null = False)
+    endDate = models.DateField(null = False)
+    interestRate = models.FloatField(null = False)
+    lender = models.CharField(max_length = 500 , null = False)
+
+
+class Outflow(models.Model):
+    user = models.ForeignKey(User , related_name='salesCreated' , null = False)
+    created = models.DateTimeField(auto_now_add=True)
+    amount = models.PositiveIntegerField(null = False)
+    date = models.DateField(null = False)
+    select = models.CharField(max_length = 100 , null = False)
+
+
+class Asset(models.Model):
+    user = models.ForeignKey(User , related_name='asset' , null = False)
+    created = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length = 500 , null = False)
+    purchaseDate = models.DateField(null = False)
+    orginalCost = models.PositiveIntegerField( null = False)
+    depreciationRate = models.FloatField( null = False)
+    depreciationValue = models.PositiveIntegerField( null = False)
+    presentVal = models.PositiveIntegerField( null = False)
+
+
+class Rawmaterial(models.Model):
+    user = models.ForeignKey(User , related_name='rawmaterial' , null = False)
+    created = models.DateTimeField(auto_now_add=True)
+    purchaseOrderNumber = models.PositiveIntegerField( null = False)
+    PurchaseOrderDate = models.DateField(null = False)
+    quality = models.CharField( max_length=500 , null = False)
+    supplier = models.CharField( max_length=500 , null = False)
+    received = models.PositiveIntegerField( null = False)
+    landedCostPerUnit = models.FloatField( null = False)

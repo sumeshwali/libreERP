@@ -112,3 +112,49 @@ class ExpenseSheetSerializer(serializers.ModelSerializer):
                 instance.submitted = True
         instance.save()
         return instance
+
+
+class LoanSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Loan
+        fields = ('pk', 'created', 'user', 'amount', 'endDate', 'interestRate' , 'lender')
+        read_only_fields = ('user' , )
+    def create(self , validated_data):
+        l = Loan(**validated_data)
+        l.user = self.context['request'].user
+        l.save()
+        return l
+
+
+class OutflowSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Outflow
+        fields = ('pk', 'created', 'user', 'amount', 'date' , 'select')
+        read_only_fields = ('user' , )
+    def create(self , validated_data):
+        o = Outflow(**validated_data)
+        o.user = self.context['request'].user
+        o.save()
+        return o
+
+class AssetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Asset
+        fields = ('pk', 'created', 'name', 'purchaseDate', 'orginalCost' , 'depreciationRate' , 'depreciationValue' , 'presentVal' )
+        read_only_fields = ('user' , )
+    def create(self , validated_data):
+        a = Asset(**validated_data)
+        a.user = self.context['request'].user
+        a.save()
+        return a
+
+class RawmaterialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Rawmaterial
+        fields = ('pk', 'created', 'purchaseOrderNumber', 'PurchaseOrderDate', 'quality' , 'supplier' , 'received' , 'landedCostPerUnit' )
+        read_only_fields = ('user' , )
+    def create(self , validated_data):
+        r = Rawmaterial(**validated_data)
+        r.user = self.context['request'].user
+        r.save()
+        return r
